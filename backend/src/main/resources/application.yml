@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/gateiseo
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+    driver-class-name: org.postgresql.Driver
+  profiles:
+    active: local
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
+            authorization-grant-type: authorization_code
+            scope: profile_nickname, profile_image
+
+jwt:
+  secret: ${JWT_SECRET:gateiseo-secret-key-must-be-at-least-32-characters-long}
+  expiration: 86400000  # 24시간 (ms)
+
+kakao:
+  client-id: ${KAKAO_CLIENT_ID:}
+  client-secret: ${KAKAO_CLIENT_SECRET:}
+  api-url: ${KAKAO_API_URL:https://kapi.kakao.com}
+  auth-url: ${KAKAO_AUTH_URL:https://kauth.kakao.com}
+
+server:
+  port: 8081
+
+logging:
+  level:
+    com.gateiseo: DEBUG
