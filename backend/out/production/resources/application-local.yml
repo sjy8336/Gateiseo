@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/gateiseo}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:password}
+
+jwt:
+  secret: local-dev-secret-key-must-be-at-least-32-chars
+
+kakao:
+  api-url: ${KAKAO_API_URL:https://kapi.kakao.com}
+  auth-url: ${KAKAO_AUTH_URL:https://kauth.kakao.com}
+  client-id: ${KAKAO_CLIENT_ID:}
+  client-secret: ${KAKAO_CLIENT_SECRET:}
