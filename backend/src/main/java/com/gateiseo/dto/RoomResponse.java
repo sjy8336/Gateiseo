@@ -1,5 +1,6 @@
 package com.gateiseo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gateiseo.domain.Room;
 import com.gateiseo.domain.Item;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class RoomResponse {
         private UUID id;
         private String nickname;
         private String profileImage;
+        @JsonProperty("isHost")
         private boolean isHost;
     }
 
@@ -34,6 +36,7 @@ public class RoomResponse {
         private String name;
         private int price;
         private int quantity;
+        @JsonProperty("isShared")
         private boolean isShared;
         private String addedByNickname;
     }

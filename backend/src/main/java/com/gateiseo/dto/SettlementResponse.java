@@ -1,5 +1,6 @@
 package com.gateiseo.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.gateiseo.domain.Settlement;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,6 +12,7 @@ public class SettlementResponse {
     private String payerNickname;
     private String receiverNickname;
     private int amount;
+    @JsonProperty("isPaid")
     private boolean isPaid;
 
     public static SettlementResponse from(Settlement s) {
